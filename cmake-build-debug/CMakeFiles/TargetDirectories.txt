@@ -1,3 +1,0 @@
-/Users/jyp/work/Vitis_Examples/kmeans-fpga/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/jyp/work/Vitis_Examples/kmeans-fpga/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/jyp/work/Vitis_Examples/kmeans-fpga/cmake-build-debug/CMakeFiles/kmeans_fpga.dir
