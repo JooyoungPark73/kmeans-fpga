@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/common.h
+cstdlib
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/cstdlib
+cstdio
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/cstdio
+iostream
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/iostream
+cassert
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/cassert
+fstream
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/fstream
+cstring
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/cstring
+
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/kmeans.cpp
+common.h
+/Users/jyp/work/Vitis_Examples/kmeans-fpga/common.h
+
