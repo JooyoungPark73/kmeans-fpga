@@ -6,7 +6,7 @@
  2. returns center[], which contains center value
 */
 
-float** kmeans_init(float** object){
+float** kmeans_init(float** object, int nObject, int nDimension, int nCenter){
 
     float** center = (float**)malloc(sizeof(float*) * nCenter); /* allocate center array */
     for(int i = 0; i < nObject; i++)

@@ -1,10 +1,9 @@
 #include "common.h"
 
-float** file_read(char* filename){
+float** file_read(char* filename, int nObject, int nDimension, int nCenter){
     float** object;
     char* line;
     int linelength = nDimension+nCenter+1;
-    //FILE *infile;
     std::ifstream infile(filename);
 
     if(!infile.is_open()){  // if file is not open, return

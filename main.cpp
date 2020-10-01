@@ -2,10 +2,10 @@
 
 int main(int argc, char* argv[]){
     /*  Usage:  ./main filename nObject nDimension nCenter */
-    argv[1] = "example.txt";
-    argv[2] = "5";
-    argv[3] = "3";
-    argv[4] = "2";
+    argv[1] = "../example.txt";
+    argv[2] = "100";
+    argv[3] = "18";
+    argv[4] = "5";
 
     if(5 != argc){
         std::cout << "invalid input; Usage:  ./main filename nObject nDimension nCenter" << std::endl;
@@ -15,11 +15,11 @@ int main(int argc, char* argv[]){
     float** object;
     float** center;
     filename = argv[1];
-    nObject = atoi(argv[2]);
-    nDimension = atoi(argv[3]);
-    nCenter = atoi(argv[4]);
+    int nObject = atoi(argv[2]);
+    int nDimension = atoi(argv[3]);
+    int nCenter = atoi(argv[4]);
 
-    object = file_read(filename);
+    object = file_read(filename, nObject, nDimension, nCenter);
     assert(object != NULL);
 
     for(int i = 0; i < nObject; i++)
@@ -29,8 +29,15 @@ int main(int argc, char* argv[]){
         std::cout << std::endl;
     }
 
-    center = kmeans_init(object);
-    kmeans(object,center);
+    center = kmeans_init(object, nObject, nDimension, nCenter);
+    kmeans(object,center, nObject, nDimension, nCenter);
+
+    for(int i = 0; i < nObject; i++)
+    {
+        for(int j = 0; j < nDimension + 2; j++)
+            std::cout << object[i][j] << "    ";
+        std::cout << std::endl;
+    }
 
     return 0;
 }
