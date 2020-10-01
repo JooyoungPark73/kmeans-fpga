@@ -34,3 +34,5 @@
 .vscode/
 .idea/
 cmake-build-debug/
+*.lock
+node_modules/

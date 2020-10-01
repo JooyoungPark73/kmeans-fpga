@@ -14,8 +14,7 @@ float** file_read(char* filename){
     line = (char*)malloc(MAX_CHAR_PER_LINE);
 
     object = (float**)malloc(sizeof(float*) * nObject); /* allocate object array */
-    for(int i = 0; i < nObject; i++)
-        object[i] = (float*)malloc(sizeof(float) * linelength);
+    for(int i = 0; i < nObject; i++) object[i] = (float*)malloc(sizeof(float) * linelength);
 
     int i = 0;
     while (!infile.eof()) {

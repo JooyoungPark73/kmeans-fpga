@@ -25,8 +25,7 @@ float** kmeans_init(float** object){
         }
     }
 
-    // std::cout << "celected random centers are: " << std::endl;
-    std::cout << "selected random centers are: " << std::endl;
+    std::cout << "celected random centers are: " << std::endl;
     for(int i=0; i<nCenter; i++){
         std::cout << random_center[i]<< ":  " ;
         for(int j=1; j<nDimension+1; j++) {
