@@ -12,8 +12,8 @@
 #include "cassert"
 #include "fstream"
 #include "cstring"
-#define MAX_CHAR_PER_LINE 128
-#define MAX_ITERATION 10
+#define MAX_CHAR_PER_LINE 256
+#define MAX_ITERATION 500
 
 float** file_read(char* filename, int nObject, int nDimension, int nCenter);
 float** kmeans_init(float** object, int nObject, int nDimension, int nCenter);

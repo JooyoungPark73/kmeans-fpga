@@ -10,7 +10,7 @@ float** kmeans_init(float** object, int nObject, int nDimension, int nCenter){
 
     float** center = (float**)malloc(sizeof(float*) * nCenter); /* allocate center array */
     for(int i = 0; i < nObject; i++)
-        center[i] = (float*)malloc(sizeof(float) * nDimension);
+        center[i] = (float*)malloc(sizeof(float) * (nDimension+1));
 
     std::srand((unsigned int)std::time(0));
     int* random_center = (int*)malloc(sizeof(int)* nCenter);

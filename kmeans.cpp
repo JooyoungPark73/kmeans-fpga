@@ -28,7 +28,7 @@
 
 void kmeans(float** object, float** center, int nObject, int nDimension, int nCenter){
     /* */
-    int i=1;
+    int iteration_checker=1;
     while(1)
     {
         int center_change = 0;
@@ -39,11 +39,9 @@ void kmeans(float** object, float** center, int nObject, int nDimension, int nCe
         for(int i=0; i<nObject; i++){   //  Calculate center distance -> i th object to j th center k th dimension
             for(int j=0; j<nCenter; j++){
                 float dist = 0;
-                for(int k=0; k<nDimension; k++) dist += (object[i][k+1] - center[j][k]) * (object[i][k+1] - center[j][k]);
+                for(int k=0; k<nDimension; k++) dist += (object[i][k+1] - center[j][k+1]) * (object[i][k+1] - center[j][k+1]);
                 object[i][nDimension+1+j] = dist;
-                std::cout << "distance is " << dist;
             }
-            std::cout << std::endl;
         }
 
         for(int i=0; i<nObject; i++){   //  Find Closest Cluster and insert in object[i][0]
@@ -53,17 +51,46 @@ void kmeans(float** object, float** center, int nObject, int nDimension, int nCe
             }
             object[i][0] = min;
         }
-        std::cout << i << "th iteration" << std::endl << "current center is" << std::endl;
-        for(int i=0; i<nObject; i++){
-            std::cout << object[i][0];
+        for(int i=0; i<nObject; i++){   // Center change detector
             if(past_center[i] != object[i][0]) {
                 center_change = 1;
                 break;
             }
+        }
+        std::cout << iteration_checker << "  iteration" << std::endl;
+//        for(int i=0; i< nObject; i++){
+//            std::cout <<"["<< i << "]  ";
+//            for(int j=0; j<nCenter+nDimension+1; j++) std::cout << object[i][j] << "   ";
+//            std::cout << std::endl;
+//        }
+
+        iteration_checker ++;
+        if(iteration_checker>MAX_ITERATION || 0 == center_change) {
+            if(iteration_checker>MAX_ITERATION) std::cout << "MAX ITERATION REACHED !!" << std::endl;
+            else std::cout << "CENTER CONVERGED !!" << std::endl;
+            return;
+        }
+
+        for(int i=0; i<nCenter; i++)center[i][0]=0; // initialize center number value
+
+        for(int i=0; i<nObject; i++){   // Calculate new center -> add all coordinate in center[] index and divide by n
+            for(int j=0; j<nDimension; j++){
+                center[int(object[i][0])][j+1] += object[i][j+1];
+            }
+            center[int(object[i][0])][0] = center[int(object[i][0])][0] + 1;
+        }
+
+        for(int i=0; i<nCenter; i++){
+            for(int j=0; j<nDimension; j++){
+                center[i][j+1] = center[i][j+1]/center[i][0];
+            }
+        }
+
+        std::cout  << "Center" << std::endl;
+        for(int i=0; i< nCenter; i++){
+            std::cout <<"["<< i << "]  ";
+            for(int j=0; j<nDimension+1; j++) std::cout << center[i][j] << "   ";
             std::cout << std::endl;
         }
-    i++;
-
-        if(i>MAX_ITERATION) return;
     }
 }
